@@ -45,8 +45,8 @@ public final class Mundo implements GLEventListener, KeyListener, MouseMotionLis
 	
 	private Animator animator;
 	
-	private float xPosition = 19.2f;
-	private float yPosition = -50.1f;	
+	private float xPosition = 0.0f;
+	private float yPosition = 0.0f;	
 	private float xCamera = 0.0f;
 	private float yCamera = 0.0f;
 	
@@ -112,8 +112,8 @@ public final class Mundo implements GLEventListener, KeyListener, MouseMotionLis
 	    
     	this.xrotOBJ = 90;
     	this.yrotOBJ = 180;
-    	this.porsche = new OBJModel("data/porsche", 3.0f, gl, true);
-        
+    	this.porsche = new OBJModel("data/porsche", 4.0f, gl, true);
+    	 
     	animator.stop();
 	}	
 
@@ -169,99 +169,178 @@ public final class Mundo implements GLEventListener, KeyListener, MouseMotionLis
 		
 //			displaySRU();		
 //			run();
-		gl.glPopMatrix();		
+		gl.glPopMatrix();
 		this.mudouDirecao = false;
-//		gl.glFlush();		
+//		gl.glFlush();
 	}
 	
 	private void desenhaMuros() {
 		this.faces2D.clear();
 		this.desenhaMuroInterno();
-		
+		this.desenhaMurosExterno();
 	}
 	
 	private void desenhaMurosExterno() {
+		this.poligno3D.desenha(new float[]{-5.5f, 15.0f, 0.0f},
+							   new float[]{0.0f, 0.0f, 0.0f},
+							   new float[]{0.5f, 35.0f, 0.5f});
+		this.faces2D.add(this.poligno3D.obtemFace2D());
+		this.poligno3D.geraPontosInferiores(this.muroIntermediario);
 		
+		this.geraMuro3D(new float[]{0.25f, 67.75f, 0.0f},
+						new float[]{-30.0f, 0.0f, 0.0f},
+						new float[]{0.5f, 5.0f, 0.5f});
+		
+		this.geraMuro3D(new float[]{17.25f, 84.75f, 0.0f},
+						new float[]{-60.0f, 0.0f, 0.0f},
+						new float[]{0.5f, 5.0f, 0.5f});
+
+		this.geraMuro3D(new float[]{55.0f, 90.5f, 0.0f},
+						new float[]{-90.0f, 0.0f, 0.0f},
+						new float[]{0.5f, 20.0f, 0.5f});
+		
+		this.geraMuro3D(new float[]{87.25f, 94.75f, 0.0f},
+						new float[]{-60.0f, 0.0f, 0.0f},
+						new float[]{0.5f, 5.0f, 0.5f});
+		
+		this.geraMuro3D(new float[]{100.25f, 107.75f, 0.0f},
+						new float[]{-30.0f, 0.0f, 0.0f},
+						new float[]{0.5f, 5.0f, 0.5f});
+		
+		this.geraMuro3D(new float[]{104.5f, 130.0f, 0.0f},
+				        new float[]{0.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 10.0f, 0.5f});
+		
+		this.geraMuro3D(new float[]{110.25f, 157.75f, 0.0f},
+				        new float[]{-30.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
+	
+		this.geraMuro3D(new float[]{127.25f, 174.75f, 0.0f},
+				        new float[]{-60.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
+		
+		this.geraMuro3D(new float[]{165.0f, 180.5f, 0.0f},
+				        new float[]{-90.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 20.0f, 0.5f});
+	
+		this.geraMuro3D(new float[]{202.75f, 174.75f, 0.0f},
+				        new float[]{-120.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
+		
+		this.geraMuro3D(new float[]{219.75f, 157.75f, 0.0f},
+				        new float[]{-150.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
+		
+		this.geraMuro3D(new float[]{225.5f, 60.0f, 0.0f},
+				        new float[]{-180.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 80.0f, 0.5f});
+		
+		this.geraMuro3D(new float[]{219.75f, -37.75f, 0.0f},
+				        new float[]{-210.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
+	
+		this.geraMuro3D(new float[]{202.75f, -54.75f, 0.0f},
+				        new float[]{-240.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
+		
+		this.geraMuro3D(new float[]{110.0f, -60.5f, 0.0f},
+				        new float[]{-270.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 75.0f, 0.5f});
+				
+		this.geraMuro3D(new float[]{17.25f, -54.75f, 0.0f},
+				        new float[]{-300.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
+				
+		this.geraMuro3D(new float[]{0.25f, -37.75f, 0.0f},
+				        new float[]{-330.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
+				
+		this.poligno3D.desenha(new float[]{-5.5f, 15.0f, 0.0f},
+						   	   new float[]{0.0f, 0.0f, 0.0f},
+						   	   new float[]{0.5f, 35.0f, 0.5f});
+		this.poligno3D.geraPontosSuperiores(this.muroIntermediario);
+		this.poligno3D.desenha(this.muroIntermediario);
+		this.faces2D.add(this.poligno3D.obtemFace2D(this.muroIntermediario));
 	}
 	
 	private void desenhaMuroInterno() {
 		this.poligno3D.desenha(new float[]{5.5f, 15.0f, 0.0f},
-				   new float[]{0.0f, 0.0f, 0.0f},
-				   new float[]{0.5f, 35.0f, 0.5f});
+							   new float[]{0.0f, 0.0f, 0.0f},
+							   new float[]{0.5f, 35.0f, 0.5f});
 		this.faces2D.add(this.poligno3D.obtemFace2D());
 		this.poligno3D.geraPontosInferiores(this.muroIntermediario);
 		
 		this.geraMuro3D(new float[]{9.75f, 62.25f, 0.0f},
-					new float[]{-30.0f, 0.0f, 0.0f},
-					new float[]{0.5f, 5.0f, 0.5f});
+						new float[]{-30.0f, 0.0f, 0.0f},
+						new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{22.75f, 75.25f, 0.0f},
-					new float[]{-60.0f, 0.0f, 0.0f},
-					new float[]{0.5f, 5.0f, 0.5f});
+						new float[]{-60.0f, 0.0f, 0.0f},
+						new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{55.0f, 79.5f, 0.0f},
-					new float[]{-90.0f, 0.0f, 0.0f},
-					new float[]{0.5f, 20.0f, 0.5f});
+						new float[]{-90.0f, 0.0f, 0.0f},
+						new float[]{0.5f, 20.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{92.75f, 85.25f, 0.0f},
-					new float[]{-60.0f, 0.0f, 0.0f},
-					new float[]{0.5f, 5.0f, 0.5f});
+						new float[]{-60.0f, 0.0f, 0.0f},
+						new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{109.75f, 102.25f, 0.0f},
-					new float[]{-30.0f, 0.0f, 0.0f},
-					new float[]{0.5f, 5.0f, 0.5f});
-		
+						new float[]{-30.0f, 0.0f, 0.0f},
+						new float[]{0.5f, 5.0f, 0.5f});
+
 		this.geraMuro3D(new float[]{115.5f, 130.0f, 0.0f},
-			        new float[]{0.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 10.0f, 0.5f});
+				        new float[]{0.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 10.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{119.75f, 152.25f, 0.0f},
-			        new float[]{-30.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 5.0f, 0.5f});
+				        new float[]{-30.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{132.75f, 165.25f, 0.0f},
-			        new float[]{-60.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 5.0f, 0.5f});
+				        new float[]{-60.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{165.0f, 169.5f, 0.0f},
-			        new float[]{-90.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 20.0f, 0.5f});
+				        new float[]{-90.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 20.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{197.25f, 165.25f, 0.0f},
-			        new float[]{-120.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 5.0f, 0.5f});
+				        new float[]{-120.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{210.25f, 152.25f, 0.0f},
-			        new float[]{-150.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 5.0f, 0.5f});
+				        new float[]{-150.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{214.5f, 60.0f, 0.0f},
-			        new float[]{-180.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 80.0f, 0.5f});
+				        new float[]{-180.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 80.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{210.25f, -32.25f, 0.0f},
-			        new float[]{-210.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 5.0f, 0.5f});
+				        new float[]{-210.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{197.25f, -45.25f, 0.0f},
-			        new float[]{-240.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 5.0f, 0.5f});
+				        new float[]{-240.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{110.0f, -49.5f, 0.0f},
-			        new float[]{-270.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 75.0f, 0.5f});
+				        new float[]{-270.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 75.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{22.75f, -45.25f, 0.0f},
-			        new float[]{-300.0f, 0.0f, 0.0f},
-			        new float[]{0.5f, 5.0f, 0.5f});
+				        new float[]{-300.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.geraMuro3D(new float[]{9.75f, -32.25f, 0.0f},
-			         new float[]{-330.0f, 0.0f, 0.0f},
-			         new float[]{0.5f, 5.0f, 0.5f});
+				        new float[]{-330.0f, 0.0f, 0.0f},
+				        new float[]{0.5f, 5.0f, 0.5f});
 		
 		this.poligno3D.desenha(new float[]{5.5f, 15.0f, 0.0f},
-			   new float[]{0.0f, 0.0f, 0.0f},
-			   new float[]{0.5f, 35.0f, 0.5f});
+							   new float[]{0.0f, 0.0f, 0.0f},
+							   new float[]{0.5f, 35.0f, 0.5f});
 		this.poligno3D.geraPontosSuperiores(this.muroIntermediario);
 		this.poligno3D.desenha(this.muroIntermediario);
 		this.faces2D.add(this.poligno3D.obtemFace2D(this.muroIntermediario));
@@ -353,7 +432,7 @@ public final class Mundo implements GLEventListener, KeyListener, MouseMotionLis
 	private void geraMuro3D(float[] translacao, float[] rotacao, float[] escala) {
 		this.poligno3D.desenha(translacao, rotacao, escala);
 		this.faces2D.add(this.poligno3D.obtemFace2D());
-//		this.geraMuro3DIntermediario();
+		this.geraMuro3DIntermediario();
 	}
 	
 	private void geraMuro3DIntermediario() {
@@ -365,7 +444,7 @@ public final class Mundo implements GLEventListener, KeyListener, MouseMotionLis
 	
 	private void geraPista3D(float[] translacao, float[] rotacao, float[] escala) {
 		this.poligno3D.desenha(translacao, rotacao, escala);
-//		this.geraPista3DIntermediaria();
+		this.geraPista3DIntermediaria();
 	}
 	
 	private void geraPista3DIntermediaria() {
@@ -404,13 +483,13 @@ public final class Mundo implements GLEventListener, KeyListener, MouseMotionLis
 				break;
 			
 			case KeyEvent.VK_RIGHT:	
-				this.view_rotz += 5.0f;
+				this.view_rotz += 1.0f;
 				this.mudouDirecao = true;
 				run();
 				break;
 				
 			case KeyEvent.VK_LEFT:
-				this.view_rotz -= 5.0f;
+				this.view_rotz -= 1.0f;
 				this.mudouDirecao = true;
 				run();
 				break;
