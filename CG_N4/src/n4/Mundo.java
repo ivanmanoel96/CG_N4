@@ -168,7 +168,7 @@ public final class Mundo implements GLEventListener, KeyListener, MouseMotionLis
 				}
 		
 //			displaySRU();		
-//			run();
+			run();
 		gl.glPopMatrix();
 		this.mudouDirecao = false;
 //		gl.glFlush();
@@ -592,7 +592,7 @@ public final class Mundo implements GLEventListener, KeyListener, MouseMotionLis
 
 		this.raio = 1.0f;
 		if (this.mudouDirecao)
-			this.raio = 0.0f;
+			this.raio = 0.3f;
 			
 		this.yPosition += this.retornarX(view_rotz, this.raio);
 		this.xPosition += this.retornarY(view_rotz, this.raio);
